@@ -1,7 +1,7 @@
 {
     "name": "Disme_Project",
     "version": "1.1.1",
-    "description": "This is Disme Project remade by D-Jukie from Miraiv2 source code",
+    "description": "This is Lisme Project remade by D-Jukie from Miraiv2/Disme source code",
     "main": "main.js",
     "scripts": {
         "start": "node index",
