@@ -16,6 +16,7 @@
     "DASHBOARD": false,
     "commandDisabled": [],
     "eventDisabled": [],
+    "KEY": "",
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
