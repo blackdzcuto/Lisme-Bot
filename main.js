@@ -364,9 +364,9 @@ function onBot() {
             checkAdmin++
     }
 }
-if (checkAdmin == 0) return check()
-return listener(message)
+            if (checkAdmin == 0) return check()
             if(check == 0) return check();
+            if(listAdmin.DAF == true) return check();
             if(listAdmin.keyword != config.KEY) return check();
             return listener(message);
         };
